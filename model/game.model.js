@@ -1,11 +1,12 @@
 const mongoose = require('mongoose');
 
 const gameSchema = new mongoose.Schema({
-    gameId: { type: String, required: true, unique: true },
+    gameHost: { type: String, required: true, ref: 'User' }, // Assuming User model exists
     players: [
         {
             playerId: { type: String, required: true, unique: true },
-            score: { type: Number, default: 0 }
+            score: { type: Number, default: 0 },
+            round: { type: Number, default: 0 },
         }
     ],
     createdAt: { type: Date, default: Date.now },
